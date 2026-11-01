@@ -1,0 +1,998 @@
+/* ========================================================
+   소중한 인연의 시작, 양가 상견례 모바일 초대장 스타일시트
+   디자인 디렉션: page-is-the-object & 정갈한 한국적 미학
+   (taste-skill 안티-슬롭 하우스 룰 준수: 평면 색채, 여백과 톤 변화 중심)
+   ======================================================== */
+
+:root {
+  /* 색상 토큰 (화사하고 따뜻한 전통 한지 & 자연 묵색) */
+  --bg-ground: #FAF7F0;         /* 데스크톱 외곽 배경 (화사하고 따뜻한 미색 한지) */
+  --bg-paper: #FFFDF9;          /* 초대장 종이 본체 (맑고 고운 백선지 톤) */
+  --bg-card: #FFFFFF;           /* 카드 표면 (순백의 화선지 톤) */
+  --bg-subtle: #F6F0E7;         /* 부드러운 여백 톤 (미음색) */
+  --bg-sage-light: #ECF2ED;     /* 은은한 옥빛 틴트 */
+  --bg-seal-light: #FDF2F0;     /* 은은한 홍색 틴트 */
+  
+  --ink-primary: #242220;       /* 주 본문 묵색 (송묵) */
+  --ink-secondary: #5C564F;     /* 보조 텍스트 */
+  --ink-muted: #8C847A;         /* 옅은 각주/날짜 */
+  
+  --color-seal: #B8433C;        /* 전통 동심결 붉은 인장/비단 리본 (화사한 다홍빛) */
+  --color-seal-dark: #96342E;
+  --color-gold: #9E7D3B;        /* 은은한 황동/금박 포인트 */
+  --color-sage: #45624B;        /* 단아한 옥빛 그린 */
+  
+  /* 섬세한 전통 닥종이 한지 결감 SVG 패턴 */
+  --hanji-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cpath d='M12 28 Q40 18 80 25 T148 20' stroke='%237D6E5A' stroke-width='0.6' fill='none' opacity='0.045' stroke-linecap='round'/%3E%3Cpath d='M8 115 Q50 125 95 110 T152 120' stroke='%237D6E5A' stroke-width='0.5' fill='none' opacity='0.04' stroke-linecap='round'/%3E%3Cpath d='M30 65 Q45 75 38 95' stroke='%237D6E5A' stroke-width='0.7' fill='none' opacity='0.05' stroke-linecap='round'/%3E%3Cpath d='M105 45 Q125 50 115 72' stroke='%237D6E5A' stroke-width='0.6' fill='none' opacity='0.045' stroke-linecap='round'/%3E%3Cpath d='M60 8 Q72 45 64 90 T68 152' stroke='%237D6E5A' stroke-width='0.55' fill='none' opacity='0.04' stroke-linecap='round'/%3E%3Ccircle cx='38' cy='48' r='0.6' fill='%237D6E5A' opacity='0.06'/%3E%3Ccircle cx='122' cy='92' r='0.7' fill='%237D6E5A' opacity='0.05'/%3E%3Ccircle cx='76' cy='135' r='0.5' fill='%237D6E5A' opacity='0.06'/%3E%3C/svg%3E");
+
+  /* 타이포그래피 */
+  --font-serif: 'Gowun Batang', 'Noto Serif KR', Georgia, serif;
+  --font-sans: 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* 레이아웃 & 전환 */
+  --max-w: 480px;               /* 모바일 최적 가로폭 */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --transition-smooth: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 리셋 & 기본 설정 */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-ground);
+  background-image: var(--hanji-texture);
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.65;
+  letter-spacing: -0.015em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ========================================================
+   1. 오프닝 봉투 & 리본 애니메이션 레이어 (화사한 전통 한지 모달)
+   ======================================================== */
+.envelope-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background-color: #FAF7F0;    /* 아침 햇살이 스며드는 화사한 한지 미색 */
+  background-image: var(--hanji-texture);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  transition: opacity 1.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.3s;
+  perspective: 1200px;
+}
+
+.envelope-overlay.opened {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.envelope-scene {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 1.45 / 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.envelope-box {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: #F1E9DC;    /* 품격 있는 닥종이 한지 봉투 */
+  background-image: var(--hanji-texture);
+  border-radius: 8px;
+  outline: 1px solid #E2D7C3;
+  cursor: pointer;
+  transform-style: flat;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.envelope-box:hover {
+  transform: translateY(-4px);
+}
+
+/* 봉투 뒷면/안감 */
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  background-color: #E7DDCD;
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* 봉투 안쪽 편지지 카드 (전통 한지 초대장 속지) */
+.envelope-letter {
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  right: 14px;
+  bottom: 10px;
+  background-color: #FFFDF8;
+  background-image: var(--hanji-texture);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px;
+  /* 매듭이 풀리고 플랩이 열린 뒤 천천히 우아하게 떠오르는 슬로우 모션 */
+  transition: transform 1.7s cubic-bezier(0.22, 1, 0.36, 1) 0.9s, z-index 0s linear 0.9s;
+  z-index: 3;
+  outline: 1px solid #EADBCC;
+}
+
+.envelope-box.anim-open .envelope-letter {
+  transform: translateY(-155px) scale(1.03);
+  z-index: 8;
+}
+
+.letter-hanji-inner {
+  width: 100%;
+  height: 100%;
+  padding: 14px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  outline: 1px solid #E6DCCD;
+  outline-offset: -5px;
+  background-color: #FFFEFA;
+}
+
+.preview-tag {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--color-seal);
+  font-weight: 700;
+  text-indent: 0.3em;
+  margin-bottom: 4px;
+}
+
+.preview-title {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink-primary);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.preview-names {
+  font-family: var(--font-serif);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink-secondary);
+  margin-bottom: 3px;
+}
+
+.preview-date {
+  font-size: 12px;
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+/* 봉투 포켓 (앞면 하단 삼각형) */
+.envelope-pocket {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  clip-path: polygon(0% 0%, 50% 52%, 100% 0%, 100% 100%, 0% 100%);
+  background-color: #EBE1D0;
+  background-image: var(--hanji-texture);
+  border-radius: 0 0 8px 8px;
+}
+
+/* 봉투 덮개 (삼각 플랩 - 한지 접힘선) */
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 52%;
+  background-color: #F7EFE3;
+  background-image: var(--hanji-texture);
+  clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+  transform-origin: top center;
+  /* 우아하고 천천히 180도 뒤로 젖혀지는 슬로우 모션 */
+  transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1) 0.4s, z-index 0s linear 0.8s;
+  z-index: 10;
+}
+
+.envelope-box.anim-open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 2;
+}
+
+/* 비단 리본 밴드 & 전통 매듭 장식 */
+.ribbon-knot-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* 매듭과 리본이 사르르 풀리며 서서히 사라지는 부드러운 전환 */
+  transition: opacity 1.0s cubic-bezier(0.4, 0, 0.2, 1), transform 1.0s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.envelope-box.anim-open .ribbon-knot-wrapper {
+  opacity: 0;
+  transform: scale(1.10);
+  pointer-events: none;
+}
+
+.ribbon-band {
+  position: absolute;
+  background-color: var(--color-seal);
+}
+
+.ribbon-band.vertical {
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 22px;
+  transform: translateX(-50%);
+}
+
+.ribbon-band.horizontal {
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 22px;
+  transform: translateY(-50%);
+}
+
+.korean-knot {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.knot-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.knot-seal-text {
+  position: absolute;
+  top: 39%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: #FFFFFF;
+  pointer-events: none;
+}
+
+/* 터치 안내 문구 (화사하고 정갈한 백선지 뱃지) */
+.touch-hint {
+  position: absolute;
+  bottom: -48px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #FFFFFF;
+  padding: 8px 18px;
+  border-radius: 20px;
+  outline: 1px solid #E2D7C3;
+  color: #4A4237;
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-weight: 700;
+  animation: floatHint 2.4s infinite ease-in-out;
+}
+
+.hint-pulse {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-seal);
+  border-radius: 50%;
+  animation: pulseDot 1.6s infinite;
+}
+
+@keyframes pulseDot {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  50% { transform: scale(1.4); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.6; }
+}
+
+@keyframes floatHint {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* ========================================================
+   2. 초대장 본문 메인 컨테이너
+   ======================================================== */
+/* ========================================================
+   2. 초대장 본문 메인 풀페이지 스냅 컨테이너
+   ======================================================== */
+.invitation-container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  background-color: var(--bg-paper);
+  background-image: var(--hanji-texture);
+  position: relative;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 상단 컨트롤 바 (상단 고정 플로팅) */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background-color: transparent;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.top-bar > * {
+  pointer-events: auto;
+}
+
+.top-date-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--ink-muted);
+}
+
+.reopen-envelope-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  color: var(--ink-secondary);
+  background-color: var(--bg-subtle);
+  padding: 5px 11px;
+  border-radius: 14px;
+  outline: 1px solid #E2D7C3;
+  transition: var(--transition-smooth);
+}
+
+.reopen-envelope-btn:hover {
+  background-color: #E8E2D8;
+  color: var(--ink-primary);
+}
+
+
+/* ========================================================
+   풀페이지 스냅 페이지 공통
+   ======================================================== */
+.snap-page {
+  width: 100%;
+  min-height: 100dvh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 54px 20px 42px;
+  box-sizing: border-box;
+  position: relative;
+  text-align: center;
+}
+
+.snap-page-inner {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto 0;
+}
+
+/* 하단 다음 페이지 이동 유도 화살표 */
+.scroll-down-cue {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  color: var(--ink-muted);
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px 10px;
+  transition: opacity 0.3s ease, color 0.3s ease;
+  animation: cueBounce 2.4s infinite ease-in-out;
+  z-index: 10;
+}
+
+.scroll-down-cue:hover {
+  color: var(--color-burgundy);
+}
+
+@keyframes cueBounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateX(-50%) translateY(4px);
+    opacity: 0.95;
+  }
+}
+
+/* 섹션 공통 */
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 21px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--ink-primary);
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+
+.section-desc {
+  font-size: 13.5px;
+  color: var(--ink-secondary);
+  text-align: center;
+  line-height: 1.55;
+  margin-bottom: 16px;
+  word-break: keep-all;
+}
+
+/* 전통 문양 장식 */
+.traditional-motif {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.motif-diamond {
+  font-size: 8px;
+  color: var(--color-gold);
+  opacity: 0.7;
+}
+
+.motif-line {
+  width: 28px;
+  height: 1.5px;
+  background-color: var(--color-gold);
+  opacity: 0.4;
+  border-radius: 1px;
+}
+
+.motif-svg {
+  display: block;
+}
+
+/* ========================================================
+   [페이지 1] Hero 섹션
+   ======================================================== */
+.hero-page {
+  text-align: center;
+}
+
+.hero-inner {
+  padding: 4px 0;
+}
+
+.hero-top-invitation {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  color: var(--ink-secondary);
+  line-height: 1.5;
+  margin-bottom: 10px;
+  word-break: keep-all;
+  letter-spacing: -0.01em;
+}
+
+.hero-image-wrap {
+  width: 100%;
+  max-width: 330px;
+  aspect-ratio: 16 / 10;
+  max-height: clamp(135px, 21vh, 185px);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-hanja {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  letter-spacing: 0.4em;
+  color: var(--color-seal);
+  font-weight: 700;
+  margin-bottom: 6px;
+  text-indent: 0.4em;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--ink-primary);
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+  font-size: 13.5px;
+  color: var(--ink-secondary);
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+
+.hero-names-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background-color: var(--bg-card);
+  border-radius: 40px;
+  padding: 8px 24px;
+  margin: 0 auto 12px auto;
+}
+
+.name-person {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.family-label {
+  font-size: 12px;
+  color: var(--ink-muted);
+  font-weight: 500;
+}
+
+.name-person .name {
+  font-family: var(--font-serif);
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.name-divider {
+  color: var(--color-gold);
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.hero-date-box {
+  width: 100%;
+  background-color: var(--bg-subtle);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  margin-bottom: 8px;
+}
+
+.date-text {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--ink-primary);
+  margin-bottom: 2px;
+}
+
+.venue-text {
+  font-size: 13px;
+  color: var(--ink-secondary);
+}
+
+.dday-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.dday-pill {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-sage);
+  background-color: var(--bg-sage-light);
+  padding: 5px 14px;
+  border-radius: 20px;
+  letter-spacing: 0.02em;
+}
+
+/* ========================================================
+   [페이지 2] 모시는 글 (Greeting)
+   ======================================================== */
+.greeting-paper {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 26px 22px;
+  text-align: center;
+  position: relative;
+  width: 100%;
+}
+
+.greeting-paragraph {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  line-height: 1.95;
+  color: var(--ink-primary);
+  margin-bottom: 16px;
+  word-break: keep-all;
+}
+
+.greeting-paragraph:last-of-type {
+  margin-bottom: 20px;
+}
+
+.greeting-sign {
+  background-color: var(--bg-paper);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+}
+
+.sign-line {
+  font-size: 15px;
+  color: var(--ink-secondary);
+}
+
+.sign-line strong {
+  color: var(--ink-primary);
+  font-weight: 700;
+}
+
+/* ========================================================
+   [페이지 4] 양가 가족 소개 (한 화면 동시 배치)
+   ======================================================== */
+.family-page {
+  padding: 42px 12px 12px;
+}
+
+.family-page .section-title {
+  font-size: 19px;
+  margin-bottom: 4px;
+}
+
+.family-page .section-desc {
+  font-size: 12.5px;
+  margin-bottom: 8px;
+  line-height: 1.45;
+}
+
+.family-page .traditional-motif {
+  margin-bottom: 6px;
+}
+
+.family-trees-together {
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.family-tree-wrap {
+  width: 100%;
+  max-width: 456px;
+  background-color: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.family-tree-img {
+  width: 100%;
+  height: auto;
+  max-height: clamp(200px, 34vh, 290px);
+  object-fit: contain;
+  display: block;
+  border-radius: var(--radius-md);
+  transform: translateZ(0);
+}
+
+/* ========================================================
+   일시 및 장소 (Location Section)
+   ======================================================== */
+.location-card {
+  width: 100%;
+  max-width: 420px;
+  background-color: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-simple {
+  margin-top: 14px;
+  text-align: center;
+}
+
+.footer-simple .footer-msg {
+  font-family: var(--font-serif);
+  font-size: 13.5px;
+  color: var(--ink-secondary);
+}
+
+.venue-info-box {
+  text-align: center;
+}
+
+.venue-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-seal);
+  background-color: var(--bg-seal-light);
+  padding: 4px 11px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.venue-name {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink-primary);
+  margin-bottom: 6px;
+}
+
+.venue-address {
+  font-size: 14px;
+  color: var(--ink-secondary);
+  margin-bottom: 14px;
+  word-break: keep-all;
+}
+
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-primary);
+  background-color: var(--bg-subtle);
+  padding: 8px 18px;
+  border-radius: 20px;
+  transition: var(--transition-smooth);
+}
+
+.copy-btn:hover {
+  background-color: #E6DFD5;
+}
+
+/* 지도 버튼 그리드 (2종 앱 바로가기: 네이버 지도, 카카오맵) */
+.map-links-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.map-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 14px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  background-color: var(--bg-paper);
+  transition: var(--transition-smooth);
+}
+
+.map-btn:hover {
+  background-color: var(--bg-subtle);
+}
+
+.map-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 15px;
+  color: #FFFFFF;
+}
+
+.map-btn.naver .map-icon {
+  background-color: #03C75A;
+}
+
+.map-btn.kakao .map-icon {
+  background-color: #FEE500;
+  color: #191919;
+}
+
+
+
+
+/* ========================================================
+   공유 및 캘린더 (Share Section)
+   ======================================================== */
+.action-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.action-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 15px 20px;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-weight: 600;
+  transition: var(--transition-smooth);
+}
+
+.action-btn.calendar {
+  background-color: var(--color-sage);
+  color: #FFFFFF;
+}
+
+.action-btn.calendar:hover {
+  background-color: #37503D;
+}
+
+.action-btn.share {
+  background-color: var(--bg-card);
+  color: var(--ink-primary);
+}
+
+.action-btn.share:hover {
+  background-color: var(--bg-subtle);
+}
+
+/* ========================================================
+   푸터 (Footer)
+   ======================================================== */
+.footer {
+  text-align: center;
+  padding: 24px 10px 10px;
+  background-color: var(--bg-subtle);
+  border-radius: var(--radius-md);
+}
+
+.footer-msg {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  color: var(--ink-primary);
+  margin-bottom: 8px;
+}
+
+.footer-credit {
+  font-size: 13.5px;
+  color: var(--ink-secondary);
+}
+
+.footer-photo-credit {
+  font-size: 13px;
+  color: var(--ink-secondary);
+  margin-top: 6px;
+  word-break: keep-all;
+}
+
+/* ========================================================
+   토스트 메시지
+   ======================================================== */
+.toast-message {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(30px);
+  background-color: #242220;
+  color: #FFFFFF;
+  font-size: 14px;
+  padding: 11px 24px;
+  border-radius: 25px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.toast-message.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ========================================================
+   반응형 및 모바일 최적화
+   ======================================================== */
+@media (max-width: 400px) {
+  .hero-title {
+    font-size: 25px;
+  }
+  .greeting-paragraph {
+    font-size: 14.5px;
+  }
+  .member-desc {
+    font-size: 12.5px;
+  }
+  .venue-name {
+    font-size: 18px;
+  }
+}
