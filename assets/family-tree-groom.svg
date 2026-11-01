@@ -2,30 +2,30 @@
   <defs>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&amp;family=Pretendard:wght@400;600;700&amp;display=swap');
-      .tree-bg { fill: #FAF7F2; rx: 16; }
-      .tree-title { font-family: 'Gowun Batang', serif; font-size: 17px; font-weight: 700; fill: #4A3E31; text-anchor: middle; letter-spacing: -0.01em; }
-      .line { stroke: #D4C5B0; stroke-width: 1.8; stroke-linecap: round; fill: none; }
-      .line-couple { stroke: #C2A675; stroke-width: 1.8; stroke-dasharray: 4 3; }
-      .card-bg { fill: #FFFFFF; stroke: #E2D9CC; stroke-width: 1.4; rx: 11; filter: drop-shadow(0 2px 5px rgba(74, 62, 49, 0.05)); }
-      .card-highlight { fill: #F4F8F4; stroke: #2D5837; stroke-width: 2.2; rx: 12; filter: drop-shadow(0 3px 8px rgba(45, 88, 55, 0.12)); }
-      .card-accent { fill: #FDFBF7; stroke: #D6C8B5; stroke-width: 1.4; rx: 11; }
-      .badge-parent { fill: #ECE5DB; rx: 5; }
-      .badge-parent-text { font-family: 'Pretendard', sans-serif; font-size: 12px; font-weight: 600; fill: #6B5B4B; text-anchor: middle; }
-      .badge-groom { fill: #234E2E; rx: 5; }
+      .tree-bg { fill: #F4EDE1; rx: 16; }
+      .tree-title { font-family: 'Gowun Batang', serif; font-size: 17px; font-weight: 700; fill: #3A2F24; text-anchor: middle; letter-spacing: -0.01em; }
+      .line { stroke: #CEBDA5; stroke-width: 1.8; stroke-linecap: round; fill: none; }
+      .line-couple { stroke: #BA9D6C; stroke-width: 1.8; stroke-dasharray: 4 3; }
+      .card-bg { fill: #FAF6EE; stroke: #DECDB7; stroke-width: 1.4; rx: 11; filter: drop-shadow(0 2px 4px rgba(60, 45, 30, 0.05)); }
+      .card-highlight { fill: #EDF4EE; stroke: #2E5637; stroke-width: 2.2; rx: 12; filter: drop-shadow(0 3px 8px rgba(46, 86, 55, 0.12)); }
+      .card-accent { fill: #F6EFE3; stroke: #D8C5AE; stroke-width: 1.4; rx: 11; }
+      .badge-parent { fill: #E8DDCE; rx: 5; }
+      .badge-parent-text { font-family: 'Pretendard', sans-serif; font-size: 12px; font-weight: 600; fill: #5C4C3C; text-anchor: middle; }
+      .badge-groom { fill: #264A2E; rx: 5; }
       .badge-groom-text { font-family: 'Pretendard', sans-serif; font-size: 12px; font-weight: 700; fill: #FFFFFF; text-anchor: middle; }
-      .badge-role { fill: #F2ECE3; rx: 5; }
-      .badge-role-text { font-family: 'Pretendard', sans-serif; font-size: 11.5px; font-weight: 600; fill: #756352; text-anchor: middle; }
-      .badge-child { fill: #F8EFE3; rx: 5; }
-      .badge-child-text { font-family: 'Pretendard', sans-serif; font-size: 11px; font-weight: 600; fill: #946E3D; text-anchor: middle; }
-      .name-text { font-family: 'Gowun Batang', serif; font-size: 17px; font-weight: 700; fill: #26211D; text-anchor: middle; }
+      .badge-role { fill: #EEE5D7; rx: 5; }
+      .badge-role-text { font-family: 'Pretendard', sans-serif; font-size: 11.5px; font-weight: 600; fill: #695745; text-anchor: middle; }
+      .badge-child { fill: #F4E8D6; rx: 5; }
+      .badge-child-text { font-family: 'Pretendard', sans-serif; font-size: 11px; font-weight: 600; fill: #855E2B; text-anchor: middle; }
+      .name-text { font-family: 'Gowun Batang', serif; font-size: 17px; font-weight: 700; fill: #261F18; text-anchor: middle; }
       .name-highlight { font-family: 'Gowun Batang', serif; font-size: 20px; font-weight: 700; fill: #183C20; text-anchor: middle; }
-      .name-child { font-family: 'Pretendard', sans-serif; font-size: 14.5px; font-weight: 700; fill: #3D3227; text-anchor: middle; }
+      .name-child { font-family: 'Pretendard', sans-serif; font-size: 14.5px; font-weight: 700; fill: #362B20; text-anchor: middle; }
     </style>
   </defs>
 
   <!-- 배경 테두리 -->
   <rect width="460" height="288" class="tree-bg" />
-  <rect x="4" y="4" width="452" height="280" fill="none" stroke="#EAE1D3" stroke-width="1.2" rx="13" />
+  <rect x="4" y="4" width="452" height="280" fill="none" stroke="#DFCDB7" stroke-width="1.2" rx="13" />
 
   <!-- 상단 가문 타이틀 -->
   <g transform="translate(195, 27)">
@@ -34,14 +34,14 @@
 
   <!-- 우측 상단 참석 안내 뱃지 -->
   <g transform="translate(390, 26)">
-    <rect x="-48" y="-12" width="96" height="24" rx="12" fill="#FFFFFF" stroke="#DECFC0" stroke-width="1.2" />
-    <text x="0" y="4" font-family="'Pretendard', sans-serif" font-size="11.5px" font-weight="700" fill="#5E4E3F" text-anchor="middle">참석 인원: 총 6명</text>
+    <rect x="-48" y="-12" width="96" height="24" rx="12" fill="#FAF6EE" stroke="#DECDB7" stroke-width="1.2" />
+    <text x="0" y="4" font-family="'Pretendard', sans-serif" font-size="11.5px" font-weight="700" fill="#594838" text-anchor="middle">참석 인원: 총 6명</text>
   </g>
 
   <!-- ==================== 1세대: 부모님 ==================== -->
   <!-- 부부선 -->
   <line x1="195" y1="74" x2="265" y2="74" class="line-couple" />
-  <circle cx="230" cy="74" r="3.5" fill="#C2A675" />
+  <circle cx="230" cy="74" r="3.5" fill="#BA9D6C" />
 
   <!-- 아버지: 최길호 -->
   <g transform="translate(95, 46)">
@@ -73,12 +73,12 @@
     <rect x="25" y="8" width="90" height="21" class="badge-groom" />
     <text x="70" y="23" class="badge-groom-text">예비 신랑 · 장남</text>
     <text x="70" y="52" class="name-highlight">최현우</text>
-    <text x="70" y="66" font-family="'Pretendard', sans-serif" font-size="10.5px" font-weight="600" fill="#2D5837" text-anchor="middle">성실하고 듬직한 반려자</text>
+    <text x="70" y="66" font-family="'Pretendard', sans-serif" font-size="10.5px" font-weight="600" fill="#2E5637" text-anchor="middle">성실하고 듬직한 반려자</text>
   </g>
 
   <!-- 여동생 & 매제 부부선 -->
   <line x1="336" y1="168" x2="364" y2="168" class="line-couple" />
-  <circle cx="350" cy="168" r="3.5" fill="#C2A675" />
+  <circle cx="350" cy="168" r="3.5" fill="#BA9D6C" />
 
   <!-- [여동생]: 최현지 -->
   <g transform="translate(250, 137)">
@@ -102,7 +102,7 @@
   <!-- ==================== 3세대: 조카 ==================== -->
   <!-- [조카]: 이은우 -->
   <g transform="translate(306, 223)">
-    <rect width="88" height="50" class="card-bg" stroke="#E0D2C0" />
+    <rect width="88" height="50" class="card-bg" stroke="#DECDB7" />
     <rect x="24" y="7" width="40" height="16" class="badge-child" />
     <text x="44" y="19" class="badge-child-text">조카</text>
     <text x="44" y="42" class="name-child">이은우</text>

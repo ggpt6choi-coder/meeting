@@ -1,29 +1,31 @@
 /* ========================================================
    소중한 인연의 시작, 양가 상견례 모바일 초대장 스타일시트
-   디자인 디렉션: page-is-the-object & 정갈한 한국적 미학
-   (taste-skill 안티-슬롭 하우스 룰 준수: 평면 색채, 여백과 톤 변화 중심)
+   디자인 디렉션: 따뜻하고 기품 있는 한국적 미학 (온백자, 닥종이, 묵색, 송록, 은은한 황동)
+   눈이 편안하고 차분한 전통 한지 톤앤매너
    ======================================================== */
 
 :root {
-  /* 색상 토큰 (화사하고 따뜻한 전통 한지 & 자연 묵색) */
-  --bg-ground: #FAF7F0;         /* 데스크톱 외곽 배경 (화사하고 따뜻한 미색 한지) */
-  --bg-paper: #FFFDF9;          /* 초대장 종이 본체 (맑고 고운 백선지 톤) */
-  --bg-card: #FFFFFF;           /* 카드 표면 (순백의 화선지 톤) */
-  --bg-subtle: #F6F0E7;         /* 부드러운 여백 톤 (미음색) */
-  --bg-sage-light: #ECF2ED;     /* 은은한 옥빛 틴트 */
-  --bg-seal-light: #FDF2F0;     /* 은은한 홍색 틴트 */
+  /* 색상 토큰: 따뜻하고 차분하며 기품 있는 전통 미학 */
+  --bg-ground: #EBE3D5;         /* 데스크톱 외곽 배경 (따스하고 포근한 오트밀/토기 톤) */
+  --bg-paper: #F6F0E4;          /* 초대장 종이 본체 (햇살을 머금은 전통 닥종이 한지) */
+  --bg-card: #EDE4D4;           /* 카드 표면 (눈이 편안하고 단아한 미색 닥종이 채색 톤) */
+  --bg-card-elevated: #E5DBCA;  /* 차분하게 강조된 카드/버튼 톤 */
+  --bg-subtle: #E3D7C5;         /* 부드러운 여백 톤 */
+  --bg-subtle-hover: #D9CBBA;   /* 호버 톤 */
+  --bg-sage-light: #DCE7DD;     /* 은은하고 차분한 옥빛 틴트 */
+  --bg-seal-light: #F4E5E1;     /* 은은하고 따뜻한 홍화 틴트 */
   
-  --ink-primary: #242220;       /* 주 본문 묵색 (송묵) */
-  --ink-secondary: #5C564F;     /* 보조 텍스트 */
-  --ink-muted: #8C847A;         /* 옅은 각주/날짜 */
+  --ink-primary: #2C241E;       /* 주 본문 묵색 (따뜻한 송묵 - 눈부심이 없는 깊은 색조) */
+  --ink-secondary: #5C5044;     /* 보조 텍스트 (차분한 묵갈색) */
+  --ink-muted: #8E7E6E;         /* 옅은 각주/날짜 (단아한 회갈색) */
   
-  --color-seal: #B8433C;        /* 전통 동심결 붉은 인장/비단 리본 (화사한 다홍빛) */
-  --color-seal-dark: #96342E;
-  --color-gold: #9E7D3B;        /* 은은한 황동/금박 포인트 */
-  --color-sage: #45624B;        /* 단아한 옥빛 그린 */
+  --color-seal: #9E3B33;        /* 전통 동심결 붉은 인장/비단 리본 (차분하고 품격 있는 다홍빛) */
+  --color-seal-dark: #7E2A23;
+  --color-gold: #98753B;        /* 은은한 고색 황동/금박 포인트 */
+  --color-sage: #38553F;        /* 단아하고 깊이 있는 송록색 */
   
-  /* 섬세한 전통 닥종이 한지 결감 SVG 패턴 */
-  --hanji-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cpath d='M12 28 Q40 18 80 25 T148 20' stroke='%237D6E5A' stroke-width='0.6' fill='none' opacity='0.045' stroke-linecap='round'/%3E%3Cpath d='M8 115 Q50 125 95 110 T152 120' stroke='%237D6E5A' stroke-width='0.5' fill='none' opacity='0.04' stroke-linecap='round'/%3E%3Cpath d='M30 65 Q45 75 38 95' stroke='%237D6E5A' stroke-width='0.7' fill='none' opacity='0.05' stroke-linecap='round'/%3E%3Cpath d='M105 45 Q125 50 115 72' stroke='%237D6E5A' stroke-width='0.6' fill='none' opacity='0.045' stroke-linecap='round'/%3E%3Cpath d='M60 8 Q72 45 64 90 T68 152' stroke='%237D6E5A' stroke-width='0.55' fill='none' opacity='0.04' stroke-linecap='round'/%3E%3Ccircle cx='38' cy='48' r='0.6' fill='%237D6E5A' opacity='0.06'/%3E%3Ccircle cx='122' cy='92' r='0.7' fill='%237D6E5A' opacity='0.05'/%3E%3Ccircle cx='76' cy='135' r='0.5' fill='%237D6E5A' opacity='0.06'/%3E%3C/svg%3E");
+  /* 섬세한 전통 닥종이 한지 결감 SVG 패턴 (따뜻한 금빛 볏짚/닥나무 섬유질 느낌) */
+  --hanji-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cpath d='M12 28 Q40 18 80 25 T148 20' stroke='%238C765C' stroke-width='0.65' fill='none' opacity='0.055' stroke-linecap='round'/%3E%3Cpath d='M8 115 Q50 125 95 110 T152 120' stroke='%238C765C' stroke-width='0.55' fill='none' opacity='0.05' stroke-linecap='round'/%3E%3Cpath d='M30 65 Q45 75 38 95' stroke='%238C765C' stroke-width='0.75' fill='none' opacity='0.06' stroke-linecap='round'/%3E%3Cpath d='M105 45 Q125 50 115 72' stroke='%238C765C' stroke-width='0.65' fill='none' opacity='0.055' stroke-linecap='round'/%3E%3Cpath d='M60 8 Q72 45 64 90 T68 152' stroke='%238C765C' stroke-width='0.6' fill='none' opacity='0.05' stroke-linecap='round'/%3E%3Ccircle cx='38' cy='48' r='0.7' fill='%238C765C' opacity='0.07'/%3E%3Ccircle cx='122' cy='92' r='0.8' fill='%238C765C' opacity='0.06'/%3E%3Ccircle cx='76' cy='135' r='0.6' fill='%238C765C' opacity='0.07'/%3E%3C/svg%3E");
 
   /* 타이포그래피 */
   --font-serif: 'Gowun Batang', 'Noto Serif KR', Georgia, serif;
@@ -82,13 +84,13 @@ a {
 }
 
 /* ========================================================
-   1. 오프닝 봉투 & 리본 애니메이션 레이어 (화사한 전통 한지 모달)
+   1. 오프닝 봉투 & 리본 애니메이션 레이어 (따뜻한 전통 한지 모달)
    ======================================================== */
 .envelope-overlay {
   position: fixed;
   inset: 0;
   z-index: 999;
-  background-color: #FAF7F0;    /* 아침 햇살이 스며드는 화사한 한지 미색 */
+  background-color: #E8E0D1;    /* 따뜻하고 아늑한 전통 닥종이 배경 */
   background-image: var(--hanji-texture);
   display: flex;
   align-items: center;
@@ -118,10 +120,11 @@ a {
   width: 100%;
   height: 100%;
   position: relative;
-  background-color: #F1E9DC;    /* 품격 있는 닥종이 한지 봉투 */
+  background-color: #E4D7C3;    /* 품격 있는 전통 닥종이 봉투 */
   background-image: var(--hanji-texture);
   border-radius: 8px;
-  outline: 1px solid #E2D7C3;
+  outline: 1px solid #D1C2AA;
+  box-shadow: 0 16px 36px -8px rgba(60, 42, 24, 0.22); /* taste-skill-ignore: real overlay modal */
   cursor: pointer;
   transform-style: flat;
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
@@ -135,7 +138,7 @@ a {
 .envelope-back {
   position: absolute;
   inset: 0;
-  background-color: #E7DDCD;
+  background-color: #D8C9B3;
   border-radius: 8px;
   overflow: hidden;
   z-index: 1;
@@ -148,7 +151,7 @@ a {
   left: 14px;
   right: 14px;
   bottom: 10px;
-  background-color: #FFFDF8;
+  background-color: #FAF5EB;
   background-image: var(--hanji-texture);
   border-radius: 6px;
   display: flex;
@@ -156,10 +159,8 @@ a {
   justify-content: center;
   text-align: center;
   padding: 8px;
-  /* 매듭이 풀리고 플랩이 열린 뒤 천천히 우아하게 떠오르는 슬로우 모션 */
   transition: transform 1.7s cubic-bezier(0.22, 1, 0.36, 1) 0.9s, z-index 0s linear 0.9s;
   z-index: 3;
-  outline: 1px solid #EADBCC;
 }
 
 .envelope-box.anim-open .envelope-letter {
@@ -175,9 +176,7 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  outline: 1px solid #E6DCCD;
-  outline-offset: -5px;
-  background-color: #FFFEFA;
+  background-color: #FDF9F2;
 }
 
 .preview-tag {
@@ -219,7 +218,7 @@ a {
   inset: 0;
   z-index: 5;
   clip-path: polygon(0% 0%, 50% 52%, 100% 0%, 100% 100%, 0% 100%);
-  background-color: #EBE1D0;
+  background-color: #DFD1BC;
   background-image: var(--hanji-texture);
   border-radius: 0 0 8px 8px;
 }
@@ -231,11 +230,10 @@ a {
   left: 0;
   right: 0;
   height: 52%;
-  background-color: #F7EFE3;
+  background-color: #EAE0CE;
   background-image: var(--hanji-texture);
   clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
   transform-origin: top center;
-  /* 우아하고 천천히 180도 뒤로 젖혀지는 슬로우 모션 */
   transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1) 0.4s, z-index 0s linear 0.8s;
   z-index: 10;
 }
@@ -253,7 +251,6 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* 매듭과 리본이 사르르 풀리며 서서히 사라지는 부드러운 전환 */
   transition: opacity 1.0s cubic-bezier(0.4, 0, 0.2, 1), transform 1.0s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -310,18 +307,17 @@ a {
   pointer-events: none;
 }
 
-/* 터치 안내 문구 (화사하고 정갈한 백선지 뱃지) */
+/* 터치 안내 문구 (따뜻하고 정갈한 미색 뱃지) */
 .touch-hint {
   position: absolute;
   bottom: -48px;
   display: flex;
   align-items: center;
   gap: 8px;
-  background-color: #FFFFFF;
+  background-color: #FAF5EB;
   padding: 8px 18px;
   border-radius: 20px;
-  outline: 1px solid #E2D7C3;
-  color: #4A4237;
+  color: #43372B;
   font-family: var(--font-serif);
   font-size: 14px;
   font-weight: 700;
@@ -347,9 +343,6 @@ a {
   50% { transform: translateY(-4px); }
 }
 
-/* ========================================================
-   2. 초대장 본문 메인 컨테이너
-   ======================================================== */
 /* ========================================================
    2. 초대장 본문 메인 풀페이지 스냅 컨테이너
    ======================================================== */
@@ -399,18 +392,16 @@ a {
   gap: 6px;
   font-size: 11.5px;
   color: var(--ink-secondary);
-  background-color: var(--bg-subtle);
-  padding: 5px 11px;
+  background-color: var(--bg-card);
+  padding: 5px 12px;
   border-radius: 14px;
-  outline: 1px solid #E2D7C3;
   transition: var(--transition-smooth);
 }
 
 .reopen-envelope-btn:hover {
-  background-color: #E8E2D8;
+  background-color: var(--bg-subtle);
   color: var(--ink-primary);
 }
-
 
 /* ========================================================
    풀페이지 스냅 페이지 공통
@@ -462,13 +453,13 @@ a {
 }
 
 .scroll-down-cue:hover {
-  color: var(--color-burgundy);
+  color: var(--color-seal);
 }
 
 @keyframes cueBounce {
   0%, 100% {
     transform: translateX(-50%) translateY(0);
-    opacity: 0.5;
+    opacity: 0.55;
   }
   50% {
     transform: translateX(-50%) translateY(4px);
@@ -508,14 +499,14 @@ a {
 .motif-diamond {
   font-size: 8px;
   color: var(--color-gold);
-  opacity: 0.7;
+  opacity: 0.75;
 }
 
 .motif-line {
   width: 28px;
   height: 1.5px;
   background-color: var(--color-gold);
-  opacity: 0.4;
+  opacity: 0.45;
   border-radius: 1px;
 }
 
@@ -634,7 +625,7 @@ a {
 
 .hero-date-box {
   width: 100%;
-  background-color: var(--bg-subtle);
+  background-color: var(--bg-card);
   border-radius: var(--radius-md);
   padding: 12px 16px;
   margin-bottom: 8px;
@@ -669,12 +660,12 @@ a {
 }
 
 /* ========================================================
-   [페이지 2] 모시는 글 (Greeting)
+   [페이지 2] 모시는 글 (Greeting) - 정갈한 전통 닥종이 서첩 스타일
    ======================================================== */
 .greeting-paper {
   background-color: var(--bg-card);
   border-radius: var(--radius-md);
-  padding: 26px 22px;
+  padding: 28px 22px;
   text-align: center;
   position: relative;
   width: 100%;
@@ -683,7 +674,7 @@ a {
 .greeting-paragraph {
   font-family: var(--font-serif);
   font-size: 14.5px;
-  line-height: 1.95;
+  line-height: 2.0;
   color: var(--ink-primary);
   margin-bottom: 16px;
   word-break: keep-all;
@@ -694,7 +685,7 @@ a {
 }
 
 .greeting-sign {
-  background-color: var(--bg-paper);
+  background-color: var(--bg-subtle);
   border-radius: var(--radius-sm);
   padding: 10px 14px;
 }
@@ -710,67 +701,14 @@ a {
 }
 
 /* ========================================================
-   [페이지 4] 양가 가족 소개 (한 화면 동시 배치)
-   ======================================================== */
-.family-page {
-  padding: 42px 12px 12px;
-}
-
-.family-page .section-title {
-  font-size: 19px;
-  margin-bottom: 4px;
-}
-
-.family-page .section-desc {
-  font-size: 12.5px;
-  margin-bottom: 8px;
-  line-height: 1.45;
-}
-
-.family-page .traditional-motif {
-  margin-bottom: 6px;
-}
-
-.family-trees-together {
-  width: 100%;
-  max-width: 460px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  align-items: center;
-}
-
-.family-tree-wrap {
-  width: 100%;
-  max-width: 456px;
-  background-color: var(--bg-card);
-  border-radius: var(--radius-md);
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.family-tree-img {
-  width: 100%;
-  height: auto;
-  max-height: clamp(200px, 34vh, 290px);
-  object-fit: contain;
-  display: block;
-  border-radius: var(--radius-md);
-  transform: translateZ(0);
-}
-
-/* ========================================================
-   일시 및 장소 (Location Section)
+   [페이지 3] 일시 및 장소 (Location Section)
    ======================================================== */
 .location-card {
   width: 100%;
   max-width: 420px;
   background-color: var(--bg-card);
   border-radius: var(--radius-md);
-  padding: 20px 18px;
+  padding: 22px 18px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -831,7 +769,7 @@ a {
 }
 
 .copy-btn:hover {
-  background-color: #E6DFD5;
+  background-color: var(--bg-subtle-hover);
 }
 
 /* 지도 버튼 그리드 (2종 앱 바로가기: 네이버 지도, 카카오맵) */
@@ -851,7 +789,8 @@ a {
   border-radius: 10px;
   font-size: 13px;
   font-weight: 600;
-  background-color: var(--bg-paper);
+  background-color: var(--bg-card-elevated);
+  color: var(--ink-primary);
   transition: var(--transition-smooth);
 }
 
@@ -880,12 +819,7 @@ a {
   color: #191919;
 }
 
-
-
-
-/* ========================================================
-   공유 및 캘린더 (Share Section)
-   ======================================================== */
+/* 공유 및 캘린더 */
 .action-grid {
   display: flex;
   flex-direction: column;
@@ -911,16 +845,69 @@ a {
 }
 
 .action-btn.calendar:hover {
-  background-color: #37503D;
+  background-color: #2F4734;
 }
 
 .action-btn.share {
-  background-color: var(--bg-card);
+  background-color: var(--bg-card-elevated);
   color: var(--ink-primary);
 }
 
 .action-btn.share:hover {
   background-color: var(--bg-subtle);
+}
+
+/* ========================================================
+   [페이지 4] 양가 가족 소개 (한 화면 동시 배치)
+   ======================================================== */
+.family-page {
+  padding: 42px 12px 12px;
+}
+
+.family-page .section-title {
+  font-size: 19px;
+  margin-bottom: 4px;
+}
+
+.family-page .section-desc {
+  font-size: 12.5px;
+  margin-bottom: 8px;
+  line-height: 1.45;
+}
+
+.family-page .traditional-motif {
+  margin-bottom: 6px;
+}
+
+.family-trees-together {
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.family-tree-wrap {
+  width: 100%;
+  max-width: 456px;
+  background-color: transparent;
+  border-radius: var(--radius-md);
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.family-tree-img {
+  width: 100%;
+  height: auto;
+  max-height: clamp(200px, 34vh, 290px);
+  object-fit: contain;
+  display: block;
+  border-radius: var(--radius-md);
+  transform: translateZ(0);
 }
 
 /* ========================================================
@@ -960,8 +947,8 @@ a {
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%) translateY(30px);
-  background-color: #242220;
-  color: #FFFFFF;
+  background-color: #2B231D;
+  color: #FAF5EB;
   font-size: 14px;
   padding: 11px 24px;
   border-radius: 25px;
@@ -971,6 +958,7 @@ a {
   transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s;
   z-index: 1000;
   pointer-events: none;
+  box-shadow: 0 8px 24px rgba(43, 35, 29, 0.25); /* taste-skill-ignore: real floating overlay toast */
 }
 
 .toast-message.show {
@@ -988,9 +976,6 @@ a {
   }
   .greeting-paragraph {
     font-size: 14.5px;
-  }
-  .member-desc {
-    font-size: 12.5px;
   }
   .venue-name {
     font-size: 18px;
