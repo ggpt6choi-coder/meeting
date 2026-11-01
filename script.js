@@ -49,13 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       envelopeOverlay.classList.add('opened');
       document.body.classList.remove('envelope-active');
-      window.scrollTo(0, 0);
+      if (window.goToSlide) window.goToSlide(0);
     }, 3300);
   }
 
   function closeEnvelope() {
     document.body.classList.add('envelope-active');
     envelopeOverlay.classList.remove('opened');
+    if (window.goToSlide) window.goToSlide(0);
     setTimeout(() => {
       envelopeBox.classList.remove('anim-open');
     }, 150);
@@ -243,18 +244,120 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 10. 풀페이지 스냅 & 하단 '다음' 이동 버튼 연동
-  const snapPages = document.querySelectorAll('.snap-page');
-  const cueBtns = document.querySelectorAll('.scroll-down-cue');
+  // 10. 고품격 풀페이지 슬라이드 & 페이징 애니메이션 시스템
+  const slidesTrack = document.getElementById('slidesTrack');
+  const slides = document.querySelectorAll('.snap-page');
+  const dots = document.querySelectorAll('.slider-dot');
+  const totalSlides = slides.length;
+  let currentSlide = 0;
+  let isAnimating = false;
 
-  // 하단 '다음' 큐 버튼 클릭 시 다음 페이지로 부드럽게 스크롤
-  cueBtns.forEach(cue => {
-    cue.addEventListener('click', () => {
-      const nextIdx = parseInt(cue.getAttribute('data-next-page'), 10);
-      if (snapPages[nextIdx]) {
-        snapPages[nextIdx].scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+  window.goToSlide = function(index) {
+    if (index < 0 || index >= totalSlides || isAnimating) return;
+    isAnimating = true;
+    currentSlide = index;
+
+    // 슬라이드 트랙 이동 (하드웨어 가속 트랜스폼 페이징 애니메이션)
+    if (slidesTrack) {
+      slidesTrack.style.transform = `translate3d(0, -${currentSlide * 100}%, 0)`;
+    }
+
+    // 도트 인디케이터 활성화
+    dots.forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === currentSlide);
     });
+
+    // 슬라이드별 활성 상태 업데이트 (내부 콘텐츠 페이드 & 스케일 애니메이션 작동)
+    slides.forEach((slide, idx) => {
+      slide.classList.toggle('active', idx === currentSlide);
+    });
+
+    setTimeout(() => {
+      isAnimating = false;
+    }, 600);
+  };
+
+  // 도트 클릭 시 해당 페이지로 전환
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const targetIdx = parseInt(dot.getAttribute('data-slide'), 10);
+      goToSlide(targetIdx);
+    });
+  });
+
+  // 하단 네비게이션 버튼 클릭 이벤트
+  document.querySelectorAll('.slide-nav-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const nextIdx = parseInt(btn.getAttribute('data-next-page'), 10);
+      goToSlide(nextIdx);
+    });
+  });
+
+  // 모바일 터치 스와이프 제스처 (상/하 부드러운 페이지 넘김)
+  let touchStartY = 0;
+  let touchStartX = 0;
+  let touchStartTime = 0;
+
+  const container = document.getElementById('invitationContent');
+  if (container) {
+    container.addEventListener('touchstart', (e) => {
+      if (!e.touches || e.touches.length === 0) return;
+      touchStartY = e.touches[0].clientY;
+      touchStartX = e.touches[0].clientX;
+      touchStartTime = Date.now();
+    }, { passive: true });
+
+    container.addEventListener('touchend', (e) => {
+      if (isAnimating) return;
+      if (!e.changedTouches || e.changedTouches.length === 0) return;
+      const touchEndY = e.changedTouches[0].clientY;
+      const touchEndX = e.changedTouches[0].clientX;
+      const diffY = touchStartY - touchEndY;
+      const diffX = touchStartX - touchEndX;
+
+      // 상하 스와이프가 30px 이상이고 좌우 스와이프보다 클 때 동작
+      if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 30) {
+        if (diffY > 0) {
+          // 위로 스와이프 -> 다음 페이지
+          goToSlide(currentSlide + 1);
+        } else {
+          // 아래로 스와이프 -> 이전 페이지
+          goToSlide(currentSlide - 1);
+        }
+      }
+    }, { passive: true });
+
+    // PC 데스크톱 마우스 휠 스크롤 지원 (디바운스 처리)
+    let wheelCooldown = false;
+    window.addEventListener('wheel', (e) => {
+      if (envelopeOverlay && !envelopeOverlay.classList.contains('opened')) return;
+      if (wheelCooldown || isAnimating) return;
+
+      if (Math.abs(e.deltaY) > 25) {
+        wheelCooldown = true;
+        if (e.deltaY > 0) {
+          goToSlide(currentSlide + 1);
+        } else {
+          goToSlide(currentSlide - 1);
+        }
+        setTimeout(() => {
+          wheelCooldown = false;
+        }, 650);
+      }
+    }, { passive: true });
+  }
+
+  // 키보드 방향키 이동 지원
+  window.addEventListener('keydown', (e) => {
+    if (envelopeOverlay && !envelopeOverlay.classList.contains('opened')) return;
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+      e.preventDefault();
+      goToSlide(currentSlide + 1);
+    } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault();
+      goToSlide(currentSlide - 1);
+    }
   });
 });
 

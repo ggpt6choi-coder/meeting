@@ -85,187 +85,219 @@
   </header>
 
   <!-- ==============================================
-       2. 초대장 본문 모바일 풀페이지 스냅 컨테이너
+       2. 초대장 본문 모바일 풀페이지 슬라이더 컨테이너
        ============================================== -->
   <main class="invitation-container" id="invitationContent">
 
-    <!-- [페이지 1] 표지 / 헤더 섹션 -->
-    <section class="snap-page hero-page" id="pageHero" data-page-index="0">
-      <div class="snap-page-inner hero-inner">
-        <p class="hero-top-invitation" id="heroTopText">사랑으로 키워주신 양가 부모님과 소중한 가족을 모십니다</p>
-        
-        <div class="hero-image-wrap">
-          <img src="assets/main.jpg" alt="신랑 최현우와 신부 김희수" class="hero-img" decoding="async" fetchpriority="high">
+    <!-- 슬라이드 트랙 (하드웨어 가속 페이징 애니메이션) -->
+    <div class="slides-track" id="slidesTrack">
+
+      <!-- [페이지 1] 표지 / 헤더 섹션 -->
+      <section class="snap-page hero-page active" id="pageHero" data-page-index="0">
+        <div class="snap-page-inner hero-inner">
+          <p class="hero-top-invitation" id="heroTopText">사랑으로 키워주신 양가 부모님과 소중한 가족을 모십니다</p>
+          
+          <div class="hero-image-wrap">
+            <img src="assets/main.jpg" alt="신랑 최현우와 신부 김희수" class="hero-img" decoding="async" fetchpriority="high">
+          </div>
+
+          <div class="hero-content">
+            <div class="traditional-motif top">
+              <span class="motif-line"></span>
+              <svg class="motif-svg" viewBox="0 0 20 20" width="16" height="16" fill="currentColor">
+                <circle cx="10" cy="10" r="3" fill="#8C6D33"/>
+                <path d="M10 2 C12 6, 14 8, 18 10 C14 12, 12 14, 10 18 C8 14, 6 12, 2 10 C6 8, 8 6, 10 2 Z" fill="#8C6D33" opacity="0.9"/>
+              </svg>
+              <span class="motif-line"></span>
+            </div>
+
+            <p class="hero-hanja">相見禮</p>
+            <h1 class="hero-title">소중한 인연의 시작,<br>양가 상견례</h1>
+            <p class="hero-subtitle" id="heroSubtitle">두 사람이 함께 빚어갈 첫 걸음,<br>양가 어른들과 소중한 가족을 정중히 모십니다.</p>
+
+            <div class="hero-names-badge">
+              <div class="name-person">
+                <span class="family-label">신랑</span>
+                <strong class="name">최현우</strong>
+              </div>
+              <div class="name-divider">&</div>
+              <div class="name-person">
+                <span class="family-label">신부</span>
+                <strong class="name">김희수</strong>
+              </div>
+            </div>
+
+            <div class="hero-date-box">
+              <p class="date-text">2026년 11월 8일 일요일 오후 1시</p>
+              <p class="venue-text">한상 (충북 청주시 흥덕구 가포산로 200)</p>
+            </div>
+
+            <div class="dday-wrapper" id="ddayWrapper">
+              <span class="dday-pill" id="ddayBadge">소중한 만남까지 계산 중</span>
+            </div>
+          </div>
         </div>
 
-        <div class="hero-content">
+        <div class="slide-nav-footer">
+          <button type="button" class="slide-nav-btn next" data-next-page="1" aria-label="모시는 말씀 페이지로 이동">
+            <span class="slide-step-badge">1 / 4</span>
+            <span class="slide-btn-label">모시는 말씀 보기</span>
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- [페이지 2] 모시는 글 (인사말) -->
+      <section class="snap-page greeting-page" id="pageGreeting" data-page-index="1">
+        <div class="snap-page-inner greeting-inner">
           <div class="traditional-motif top">
             <span class="motif-line"></span>
-            <svg class="motif-svg" viewBox="0 0 20 20" width="16" height="16" fill="currentColor">
-              <circle cx="10" cy="10" r="3" fill="#8C6D33"/>
-              <path d="M10 2 C12 6, 14 8, 18 10 C14 12, 12 14, 10 18 C8 14, 6 12, 2 10 C6 8, 8 6, 10 2 Z" fill="#8C6D33" opacity="0.9"/>
-            </svg>
+            <span class="motif-diamond">◆</span>
             <span class="motif-line"></span>
           </div>
 
-          <p class="hero-hanja">相見禮</p>
-          <h1 class="hero-title">소중한 인연의 시작,<br>양가 상견례</h1>
-          <p class="hero-subtitle" id="heroSubtitle">두 사람이 함께 빚어갈 첫 걸음,<br>양가 어른들과 소중한 가족을 정중히 모십니다.</p>
-
-          <div class="hero-names-badge">
-            <div class="name-person">
-              <span class="family-label">신랑</span>
-              <strong class="name">최현우</strong>
-            </div>
-            <div class="name-divider">&</div>
-            <div class="name-person">
-              <span class="family-label">신부</span>
-              <strong class="name">김희수</strong>
-            </div>
-          </div>
-
-          <div class="hero-date-box">
-            <p class="date-text">2026년 11월 8일 일요일 오후 1시</p>
-            <p class="venue-text">한상 (충북 청주시 흥덕구 가포산로 200)</p>
-          </div>
-
-          <div class="dday-wrapper" id="ddayWrapper">
-            <span class="dday-pill" id="ddayBadge">소중한 만남까지 계산 중</span>
-          </div>
-        </div>
-      </div>
-
-      <button type="button" class="scroll-down-cue" data-next-page="1" aria-label="다음 페이지로 이동">
-        <span class="cue-text">다음</span>
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2">
-          <path d="M6 9l6 6 6-6"/>
-        </svg>
-      </button>
-    </section>
-
-    <!-- [페이지 2] 모시는 글 (인사말) -->
-    <section class="snap-page greeting-page" id="pageGreeting" data-page-index="1">
-      <div class="snap-page-inner greeting-inner">
-        <div class="traditional-motif top">
-          <span class="motif-line"></span>
-          <span class="motif-diamond">◆</span>
-          <span class="motif-line"></span>
-        </div>
-
-        <h2 class="section-title" id="greetingTitle">모시는 말씀</h2>
-        
-        <div class="greeting-paper" id="greetingPaper">
-          <p class="greeting-paragraph">
-            서로 다른 삶을 살아온 두 사람이<br>
-            사랑과 신뢰로 마주하여<br>
-            하나의 가정을 이루고자 합니다.
-          </p>
-          <p class="greeting-paragraph">
-            오늘날 저희가 따뜻하고 바르게 자라<br>
-            평생의 짝을 만날 수 있었던 것은<br>
-            언제나 아낌없는 사랑과 헌신으로 지켜봐 주신<br>
-            양가 부모님의 은혜 덕분입니다.
-          </p>
-          <p class="greeting-paragraph">
-            마음 깊이 존경하는 부모님과 소중한 가족을 모시고<br>
-            감사의 인사를 올리며 기쁜 인연을 맺고자 하오니,<br>
-            편안한 발걸음으로 오셔서<br>
-            따뜻한 격려와 축복을 나누어 주시면 감사하겠습니다.
-          </p>
+          <h2 class="section-title" id="greetingTitle">모시는 말씀</h2>
           
-          <div class="greeting-sign">
-            <p class="sign-line">신랑 <strong>최현우</strong> · 신부 <strong>김희수</strong> 올림</p>
-          </div>
-        </div>
-      </div>
-
-      <button type="button" class="scroll-down-cue" data-next-page="2" aria-label="다음 페이지로 이동">
-        <span class="cue-text">다음</span>
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2">
-          <path d="M6 9l6 6 6-6"/>
-        </svg>
-      </button>
-    </section>
-
-    <!-- [페이지 3] 일시 및 장소 상세 안내 -->
-    <section class="snap-page location-page" id="pageLocation" data-page-index="2">
-      <div class="snap-page-inner location-inner">
-        <div class="traditional-motif top">
-          <span class="motif-line"></span>
-          <span class="motif-diamond">◆</span>
-          <span class="motif-line"></span>
-        </div>
-
-        <h2 class="section-title">장소 안내</h2>
-
-        <div class="location-card">
-          <!-- 식당 상차림 전경 사진 -->
-          <div class="venue-image-wrap">
-            <img src="assets/dining.jpg" alt="한상 청주 상견례 상차림 전경" class="venue-img" decoding="async" loading="lazy">
-          </div>
-
-          <div class="venue-info-box">
-            <span class="venue-tag" id="venueTag">단독 룸 예약</span>
-            <h3 class="venue-name">한상 (청주)</h3>
-            <p class="venue-address" id="venueAddress">충북 청주시 흥덕구 가포산로 200 주건축물 제1동 1층</p>
-            <button type="button" class="copy-btn" id="copyAddressBtn">
-              <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="2">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
-              </svg>
-              <span>주소 복사</span>
-            </button>
-          </div>
-
-          <!-- 지도 네비게이션 바로가기 버튼 2종 -->
-          <div class="map-links-grid">
-            <a href="https://map.naver.com/p/search/%EC%B6%A9%EB%B6%81%20%EC%B2%AD%EC%A3%BC%EC%8B%9C%20%ED%9D%A5%EB%8D%95%EA%B5%AC%20%EA%B0%80%ED%8F%AC%EC%82%B0%EB%A1%9C%20200%20%ED%95%9C%EC%83%81" target="_blank" rel="noopener noreferrer" class="map-btn naver" id="btnNaverMap">
-              <span class="map-icon">N</span>
-              <span>네이버 지도</span>
-            </a>
-            <a href="https://map.kakao.com/link/search/%EC%B6%A9%EB%B6%81%20%EC%B2%AD%EC%A3%BC%EC%8B%9C%20%ED%9D%A5%EB%8D%95%EA%B5%AC%20%EA%B0%80%ED%8F%AC%EC%82%B0%EB%A1%9C%20200%20%ED%95%9C%EC%83%81" target="_blank" rel="noopener noreferrer" class="map-btn kakao" id="btnKakaoMap">
-              <span class="map-icon">K</span>
-              <span>카카오맵</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <button type="button" class="scroll-down-cue" data-next-page="3" aria-label="다음 페이지로 이동">
-        <span class="cue-text">다음</span>
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2">
-          <path d="M6 9l6 6 6-6"/>
-        </svg>
-      </button>
-    </section>
-
-    <!-- [페이지 4] 양가 가족 소개: 신랑측 & 신부측 한 화면 동시 배치 & 맺음말 -->
-    <section class="snap-page family-page" id="pageFamily" data-page-index="3">
-      <div class="snap-page-inner family-inner">
-        <div class="traditional-motif top">
-          <span class="motif-line"></span>
-          <span class="motif-diamond">◆</span>
-          <span class="motif-line"></span>
-        </div>
-
-        <h2 class="section-title">함께하는 양가 가족</h2>
-
-        <div class="family-trees-together">
-          <div class="family-tree-wrap">
-            <img src="assets/family-tree-groom.svg" alt="신랑 최현우 측 가족관계도" class="family-tree-img" loading="lazy">
-          </div>
-
-          <div class="family-tree-wrap">
-            <img src="assets/family-tree-bride.svg" alt="신부 김희수 측 가족관계도" class="family-tree-img" loading="lazy">
+          <div class="greeting-paper" id="greetingPaper">
+            <p class="greeting-paragraph">
+              서로 다른 삶을 살아온 두 사람이<br>
+              사랑과 신뢰로 마주하여<br>
+              하나의 가정을 이루고자 합니다.
+            </p>
+            <p class="greeting-paragraph">
+              오늘날 저희가 따뜻하고 바르게 자라<br>
+              평생의 짝을 만날 수 있었던 것은<br>
+              언제나 아낌없는 사랑과 헌신으로 지켜봐 주신<br>
+              양가 부모님의 은혜 덕분입니다.
+            </p>
+            <p class="greeting-paragraph">
+              마음 깊이 존경하는 부모님과 소중한 가족을 모시고<br>
+              감사의 인사를 올리며 기쁜 인연을 맺고자 하오니,<br>
+              편안한 발걸음으로 오셔서<br>
+              따뜻한 격려와 축복을 나누어 주시면 감사하겠습니다.
+            </p>
+            
+            <div class="greeting-sign">
+              <p class="sign-line">신랑 <strong>최현우</strong> · 신부 <strong>김희수</strong> 올림</p>
+            </div>
           </div>
         </div>
 
-        <!-- 마무리 축복 인사 -->
-        <footer class="footer-simple">
-          <p class="footer-msg" id="footerMsg">서로를 아끼고 공경하며 예쁘게 살아가겠습니다.</p>
-        </footer>
-      </div>
-    </section>
+        <div class="slide-nav-footer">
+          <button type="button" class="slide-nav-btn next" data-next-page="2" aria-label="장소 안내 페이지로 이동">
+            <span class="slide-step-badge">2 / 4</span>
+            <span class="slide-btn-label">장소 안내 보기</span>
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- [페이지 3] 일시 및 장소 상세 안내 -->
+      <section class="snap-page location-page" id="pageLocation" data-page-index="2">
+        <div class="snap-page-inner location-inner">
+          <div class="traditional-motif top">
+            <span class="motif-line"></span>
+            <span class="motif-diamond">◆</span>
+            <span class="motif-line"></span>
+          </div>
+
+          <h2 class="section-title">장소 안내</h2>
+
+          <div class="location-card">
+            <!-- 식당 상차림 전경 사진 -->
+            <div class="venue-image-wrap">
+              <img src="assets/dining.jpg" alt="한상 청주 상견례 상차림 전경" class="venue-img" decoding="async" loading="lazy">
+            </div>
+
+            <div class="venue-info-box">
+              <span class="venue-tag" id="venueTag">단독 룸 예약</span>
+              <h3 class="venue-name">한상 (청주)</h3>
+              <p class="venue-address" id="venueAddress">충북 청주시 흥덕구 가포산로 200 주건축물 제1동 1층</p>
+              <button type="button" class="copy-btn" id="copyAddressBtn">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+                </svg>
+                <span>주소 복사</span>
+              </button>
+            </div>
+
+            <!-- 지도 네비게이션 바로가기 버튼 2종 -->
+            <div class="map-links-grid">
+              <a href="https://map.naver.com/p/search/%EC%B6%A9%EB%B6%81%20%EC%B2%AD%EC%A3%BC%EC%8B%9C%20%ED%9D%A5%EB%8D%95%EA%B5%AC%20%EA%B0%80%ED%8F%AC%EC%82%B0%EB%A1%9C%20200%20%ED%95%9C%EC%83%81" target="_blank" rel="noopener noreferrer" class="map-btn naver" id="btnNaverMap">
+                <span class="map-icon">N</span>
+                <span>네이버 지도</span>
+              </a>
+              <a href="https://map.kakao.com/link/search/%EC%B6%A9%EB%B6%81%20%EC%B2%AD%EC%A3%BC%EC%8B%9C%20%ED%9D%A5%EB%8D%95%EA%B5%AC%20%EA%B0%80%ED%8F%AC%EC%82%B0%EB%A1%9C%20200%20%ED%95%9C%EC%83%81" target="_blank" rel="noopener noreferrer" class="map-btn kakao" id="btnKakaoMap">
+                <span class="map-icon">K</span>
+                <span>카카오맵</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-nav-footer">
+          <button type="button" class="slide-nav-btn next" data-next-page="3" aria-label="함께하는 가족 보기">
+            <span class="slide-step-badge">3 / 4</span>
+            <span class="slide-btn-label">함께하는 가족 보기</span>
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- [페이지 4] 양가 가족 소개: 신랑측 & 신부측 한 화면 동시 배치 & 맺음말 -->
+      <section class="snap-page family-page" id="pageFamily" data-page-index="3">
+        <div class="snap-page-inner family-inner">
+          <div class="traditional-motif top">
+            <span class="motif-line"></span>
+            <span class="motif-diamond">◆</span>
+            <span class="motif-line"></span>
+          </div>
+
+          <h2 class="section-title">함께하는 양가 가족</h2>
+
+          <div class="family-trees-together">
+            <div class="family-tree-wrap">
+              <img src="assets/family-tree-groom.svg" alt="신랑 최현우 측 가족관계도" class="family-tree-img" loading="lazy">
+            </div>
+
+            <div class="family-tree-wrap">
+              <img src="assets/family-tree-bride.svg" alt="신부 김희수 측 가족관계도" class="family-tree-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- 마무리 축복 인사 -->
+          <footer class="footer-simple">
+            <p class="footer-msg" id="footerMsg">서로를 아끼고 공경하며 예쁘게 살아가겠습니다.</p>
+          </footer>
+        </div>
+
+        <div class="slide-nav-footer">
+          <button type="button" class="slide-nav-btn first" data-next-page="0" aria-label="처음 표지로 돌아가기">
+            <span class="slide-step-badge">4 / 4</span>
+            <span class="slide-btn-label">처음으로 돌아가기</span>
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M18 15l-6-6-6 6"/>
+            </svg>
+          </button>
+        </div>
+      </section>
+
+    </div><!-- /.slides-track -->
+
+    <!-- 우측 세로 페이지 인디케이터 도트 (1~4페이지 상태 표시 및 탭 전환) -->
+    <nav class="slider-dots" id="sliderDots" aria-label="초대장 페이지 탐색">
+      <button type="button" class="slider-dot active" data-slide="0" aria-label="1페이지: 상견례 표지"></button>
+      <button type="button" class="slider-dot" data-slide="1" aria-label="2페이지: 모시는 말씀"></button>
+      <button type="button" class="slider-dot" data-slide="2" aria-label="3페이지: 장소 안내"></button>
+      <button type="button" class="slider-dot" data-slide="3" aria-label="4페이지: 양가 가족"></button>
+    </nav>
 
   </main>
 

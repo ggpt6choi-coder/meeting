@@ -49,14 +49,12 @@
 
 html {
   height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
 }
 
 body {
   width: 100%;
-  min-height: 100%;
+  height: 100%;
   background-color: var(--bg-ground);
   background-image: var(--hanji-texture);
   color: var(--ink-primary);
@@ -66,7 +64,8 @@ body {
   letter-spacing: -0.015em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow: hidden;
+  touch-action: pan-y;
 }
 
 body.envelope-active {
@@ -352,13 +351,22 @@ a {
 .invitation-container {
   width: 100%;
   max-width: var(--max-w);
+  height: 100dvh;
   margin: 0 auto;
   background-color: var(--bg-paper);
   background-image: var(--hanji-texture);
   position: relative;
-  padding: 0;
+  overflow: hidden;
+}
+
+/* 슬라이드 트랙 (하드웨어 가속 부드러운 수직 이동) */
+.slides-track {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  transition: transform 0.58s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 
 /* 상단 컨트롤 바 (상단 고정 플로팅) */
@@ -407,19 +415,22 @@ a {
 }
 
 /* ========================================================
-   풀페이지 스냅 페이지 공통
+   풀페이지 슬라이드 페이지 공통
    ======================================================== */
 .snap-page {
   width: 100%;
-  min-height: 100dvh;
+  height: 100dvh;
+  flex: 0 0 100dvh;
+  max-height: 100dvh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 38px 18px 28px;
+  padding: 44px 18px 14px;
   box-sizing: border-box;
   position: relative;
   text-align: center;
+  overflow: hidden;
 }
 
 .snap-page-inner {
@@ -429,43 +440,113 @@ a {
   flex-direction: column;
   align-items: center;
   margin: auto 0;
+  opacity: 0.6;
+  transform: scale(0.97) translateY(8px);
+  transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1) 0.12s, transform 0.5s cubic-bezier(0.25, 1, 0.5, 1) 0.12s;
 }
 
-/* 하단 다음 페이지 이동 유도 화살표 */
-.scroll-down-cue {
-  position: absolute;
-  bottom: 8px;
-  left: 50%;
-  transform: translateX(-50%);
+.snap-page.active .snap-page-inner {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* ========================================================
+   슬라이드 하단 고정 네비게이션 버튼 (정갈한 한지 캡슐)
+   ======================================================== */
+.slide-nav-footer {
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 1px;
-  color: var(--ink-muted);
-  font-size: 10.5px;
-  letter-spacing: 0.05em;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 4px 10px;
-  transition: opacity 0.3s ease, color 0.3s ease;
-  animation: cueBounce 2.4s infinite ease-in-out;
+  padding-top: 4px;
+  padding-bottom: 2px;
+  flex-shrink: 0;
   z-index: 10;
 }
 
-.scroll-down-cue:hover {
-  color: var(--color-seal);
+.slide-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--bg-card);
+  color: var(--ink-secondary);
+  padding: 7px 18px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.25s ease, transform 0.25s ease, color 0.25s ease;
 }
 
-@keyframes cueBounce {
-  0%, 100% {
-    transform: translateX(-50%) translateY(0);
-    opacity: 0.55;
-  }
-  50% {
-    transform: translateX(-50%) translateY(4px);
-    opacity: 0.95;
-  }
+.slide-nav-btn:hover, .slide-nav-btn:active {
+  background-color: var(--bg-subtle);
+  color: var(--ink-primary);
+  transform: translateY(-2px);
+}
+
+.slide-step-badge {
+  font-family: var(--font-serif);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-seal);
+  background-color: var(--bg-seal-light);
+  padding: 2px 8px;
+  border-radius: 10px;
+  letter-spacing: 0.04em;
+}
+
+.slide-btn-label {
+  font-size: 12.5px;
+  letter-spacing: -0.01em;
+}
+
+.slide-nav-btn svg {
+  color: var(--color-gold);
+  transition: transform 0.25s ease;
+}
+
+.slide-nav-btn:hover svg {
+  transform: translateY(2px);
+}
+
+.slide-nav-btn.first:hover svg {
+  transform: translateY(-2px);
+}
+
+/* ========================================================
+   우측 세로 페이지 인디케이터 도트
+   ======================================================== */
+.slider-dots {
+  position: fixed;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 90;
+  background-color: var(--bg-card);
+  padding: 9px 5px;
+  border-radius: 20px;
+  pointer-events: auto;
+}
+
+.slider-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #D2C5B3;
+  transition: height 0.35s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.35s ease, border-radius 0.35s ease;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+
+.slider-dot.active {
+  height: 18px;
+  border-radius: 9px;
+  background-color: var(--color-seal);
 }
 
 /* 섹션 공통 */
