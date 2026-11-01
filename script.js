@@ -26,6 +26,21 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('envelope-active');
   }
 
+  // 이미지 사전 디코딩 (모바일 스크롤 시 렌더링 버벅임 완전 방지)
+  const preloadUrls = [
+    'assets/main.jpg',
+    'assets/dining.jpg',
+    'assets/family-tree-groom.svg',
+    'assets/family-tree-bride.svg'
+  ];
+  preloadUrls.forEach(url => {
+    const img = new Image();
+    img.src = url;
+    if (img.decode) {
+      img.decode().catch(() => {});
+    }
+  });
+
   function openEnvelope() {
     if (envelopeBox.classList.contains('anim-open')) return;
     envelopeBox.classList.add('anim-open');
@@ -34,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       envelopeOverlay.classList.add('opened');
       document.body.classList.remove('envelope-active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo(0, 0);
     }, 3300);
   }
 
