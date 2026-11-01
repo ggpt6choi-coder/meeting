@@ -27,10 +27,7 @@
   <rect width="460" height="288" class="tree-bg" />
   <rect x="4" y="4" width="452" height="280" fill="none" stroke="#DFCDB7" stroke-width="1.2" rx="13" />
 
-  <!-- 상단 가문 타이틀 -->
-  <g transform="translate(195, 27)">
-    <text y="0" class="tree-title">신랑 최현우 측 가족관계도</text>
-  </g>
+
 
   <!-- 우측 상단 참석 안내 뱃지 -->
   <g transform="translate(390, 26)">
