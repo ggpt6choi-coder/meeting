@@ -21,18 +21,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const envelopeBox = document.getElementById('envelopeBox');
   const reopenEnvelopeBtn = document.getElementById('reopenEnvelopeBtn');
 
+  // 봉투가 덮여있는 동안 배경 스크롤 방지
+  if (envelopeOverlay && !envelopeOverlay.classList.contains('opened')) {
+    document.body.classList.add('envelope-active');
+  }
+
   function openEnvelope() {
     if (envelopeBox.classList.contains('anim-open')) return;
     envelopeBox.classList.add('anim-open');
 
-    // 매듭이 풀리고, 플랩이 회전하며, 한지 속지가 천천히 떠오르는 품격 있는 느린 호흡 (3.3초)
+    // 매듭이 풀리고, 플랩이 회전하며, 한지 속지가 천천히 떠오르는 품격 있는 호흡
     setTimeout(() => {
       envelopeOverlay.classList.add('opened');
+      document.body.classList.remove('envelope-active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 3300);
   }
 
   function closeEnvelope() {
+    document.body.classList.add('envelope-active');
     envelopeOverlay.classList.remove('opened');
     setTimeout(() => {
       envelopeBox.classList.remove('anim-open');
@@ -230,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cue.addEventListener('click', () => {
       const nextIdx = parseInt(cue.getAttribute('data-next-page'), 10);
       if (snapPages[nextIdx]) {
-        snapPages[nextIdx].scrollIntoView({ behavior: 'smooth' });
+        snapPages[nextIdx].scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
   });
