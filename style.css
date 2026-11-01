@@ -538,8 +538,8 @@ a {
 .hero-image-wrap {
   width: 100%;
   max-width: 330px;
-  aspect-ratio: 16 / 10;
-  max-height: clamp(135px, 21vh, 185px);
+  height: clamp(270px, 38vh, 340px);
+  aspect-ratio: 1 / 1;
   border-radius: var(--radius-md);
   overflow: hidden;
   margin-bottom: 12px;
