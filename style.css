@@ -451,14 +451,14 @@ a {
 }
 
 /* ========================================================
-   슬라이드 하단 고정 네비게이션 버튼 (정갈한 한지 캡슐)
+   슬라이드 하단 네비게이션 힌트 (눈에 띄지 않고 은은한 미니멀 디자인)
    ======================================================== */
 .slide-nav-footer {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 4px;
+  padding-top: 2px;
   padding-bottom: 2px;
   flex-shrink: 0;
   z-index: 10;
@@ -467,42 +467,33 @@ a {
 .slide-nav-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background-color: var(--bg-card);
-  color: var(--ink-secondary);
-  padding: 7px 18px;
-  border-radius: 20px;
-  font-size: 12.5px;
-  font-weight: 600;
+  gap: 5px;
+  background-color: transparent;
+  color: var(--ink-muted);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
   cursor: pointer;
   border: none;
-  transition: background-color 0.25s ease, transform 0.25s ease, color 0.25s ease;
+  opacity: 0.65;
+  transition: opacity 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
 
 .slide-nav-btn:hover, .slide-nav-btn:active {
-  background-color: var(--bg-subtle);
-  color: var(--ink-primary);
-  transform: translateY(-2px);
-}
-
-.slide-step-badge {
-  font-family: var(--font-serif);
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--color-seal);
-  background-color: var(--bg-seal-light);
-  padding: 2px 8px;
-  border-radius: 10px;
-  letter-spacing: 0.04em;
+  opacity: 0.95;
+  color: var(--ink-secondary);
+  transform: translateY(-1px);
 }
 
 .slide-btn-label {
-  font-size: 12.5px;
-  letter-spacing: -0.01em;
+  font-size: 11.5px;
 }
 
 .slide-nav-btn svg {
-  color: var(--color-gold);
+  color: currentColor;
+  opacity: 0.75;
   transition: transform 0.25s ease;
 }
 
@@ -706,38 +697,19 @@ a {
   font-weight: 300;
 }
 
-.hero-date-box {
-  width: 100%;
-  background-color: var(--bg-card);
-  border-radius: var(--radius-md);
-  padding: 9px 14px;
-  margin-bottom: 6px;
-}
-
-.date-text {
-  font-weight: 700;
-  font-size: 14.5px;
-  color: var(--ink-primary);
-  margin-bottom: 2px;
-}
-
-.venue-text {
-  font-size: 12.5px;
-  color: var(--ink-secondary);
-}
-
 .dday-wrapper {
   display: flex;
   justify-content: center;
-  margin-top: 2px;
+  margin-top: 6px;
+  margin-bottom: 2px;
 }
 
 .dday-pill {
-  font-size: 11.5px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 600;
   color: var(--color-sage);
   background-color: var(--bg-sage-light);
-  padding: 4px 13px;
+  padding: 6px 18px;
   border-radius: 20px;
   letter-spacing: 0.02em;
 }
