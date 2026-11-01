@@ -40,20 +40,20 @@
   <line x1="195" y1="74" x2="265" y2="74" class="line-couple" />
   <circle cx="230" cy="74" r="3.5" fill="#BA9D6C" />
 
-  <!-- 아버지: 김민수 -->
+  <!-- 아버지: 김진수 -->
   <g transform="translate(95, 46)">
     <rect width="100" height="56" class="card-bg" />
     <rect x="26" y="7" width="48" height="18" class="badge-parent" />
     <text x="50" y="20.5" class="badge-parent-text">아버지</text>
-    <text x="50" y="47" class="name-text">김민수</text>
+    <text x="50" y="47" class="name-text">김진수</text>
   </g>
 
-  <!-- 어머니: 김선미 -->
+  <!-- 어머니: 윤현미 -->
   <g transform="translate(265, 46)">
     <rect width="100" height="56" class="card-bg" />
     <rect x="26" y="7" width="48" height="18" class="badge-parent" />
     <text x="50" y="20.5" class="badge-parent-text">어머니</text>
-    <text x="50" y="47" class="name-text">김선미</text>
+    <text x="50" y="47" class="name-text">윤현미</text>
   </g>
 
   <!-- 1세대 -> 2세대 줄기 -->
